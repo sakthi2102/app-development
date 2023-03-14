@@ -43,6 +43,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker marker;
     SearchView searchView;
 
+
+    public boolean isMyLocationButtonEnabled ()
+    {
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
