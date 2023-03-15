@@ -19,7 +19,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:foreground="@color/black"
         android:background="#7C829193"
         android:elevation="5dp"
         android:id="@+id/search"
