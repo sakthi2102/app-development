@@ -6,12 +6,15 @@
     tools:context=".MapsActivity"
     android:layout_height="match_parent">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map"
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mapview"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/activity_maps" />
+        tools:context="com.example.mapwithmarker.MapsMarkerActivity"/>
+
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
