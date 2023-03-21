@@ -149,6 +149,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (resultCode == 101) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(MapsActivity.this, "Gps Enabled", Toast.LENGTH_SHORT).show();
+                GetLocationUpdate();
             }
             if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(MapsActivity.this, "Denied Gps", Toast.LENGTH_SHORT).show();
