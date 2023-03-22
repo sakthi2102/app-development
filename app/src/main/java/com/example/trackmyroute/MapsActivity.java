@@ -76,7 +76,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         supportMapFragment.getMapAsync(this);
         CheckGps();
 
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -112,6 +111,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+
+
     private void CheckGps() {
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(locationRequest.PRIORITY_HIGH_ACCURACY);
@@ -125,7 +126,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationSettingsRequestTask.addOnCompleteListener(task -> {
             try {
                 LocationSettingsResponse response = task.getResult(ApiException.class);
-                Toast.makeText(MapsActivity.this, "Gps Already Enabled", Toast.LENGTH_SHORT).show();
                 GetLocationUpdate();
             } catch (ApiException e) {
                 if (e.getStatusCode() == LocationSettingsStatusCodes.RESOLUTION_REQUIRED) {
@@ -147,9 +147,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 101) {
-            if (resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK)
+            {
                 Toast.makeText(MapsActivity.this, "Gps Enabled", Toast.LENGTH_SHORT).show();
-                GetLocationUpdate();
             }
             if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(MapsActivity.this, "Denied Gps", Toast.LENGTH_SHORT).show();
@@ -165,13 +165,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         String provider = locationManager.getBestProvider(criteria, true);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         Location location = locationManager.getLastKnownLocation(provider);
@@ -182,7 +176,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(latLng )      // Sets the center of the map to Mountain View
                 .zoom(20)                   // Sets the zoom
-                .bearing(90)                // Sets the orientation of the camera to east
+                .bearing(10)                // Sets the orientation of the camera to east
                 .tilt(30)                   // Sets the tilt of the camera to 30 degrees
                 .build();                   // Creates a CameraPosition from the builder
         gmap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -206,6 +200,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         gmap.setMyLocationEnabled(true);
+
         gmap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
