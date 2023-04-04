@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -185,7 +187,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double lat = location.getLatitude();
             double lng = location.getLongitude();
             LatLng latLng = new LatLng(lat, lng);
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.marker);
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(originalBitmap, 120, 120, false);
             MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location");
+            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(resizedBitmap));
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(latLng )      // Sets the center of the map to Mountain View
                     .zoom(50)                   // Sets the zoom

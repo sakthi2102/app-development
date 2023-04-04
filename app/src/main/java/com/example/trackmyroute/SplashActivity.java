@@ -34,12 +34,12 @@ public class SplashActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        img = findViewById(R.id.imageView);
-        Glide.with(this)
-                .asGif()
-                .override(500, 500) // Load a lower resolution version of the GIF
-                .load(R.drawable.logo1)
-                .into(img);
+//        img = findViewById(R.id.imageView);
+//        Glide.with(this)
+//                .asGif()
+//                .override(500, 500) // Load a lower resolution version of the GIF
+//                .load(R.drawable.logo1)
+//                .into(img);
         //mover
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 4000);
+        }, 2000);
 
 
     }
